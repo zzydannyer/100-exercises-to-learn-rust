@@ -1,6 +1,9 @@
 // TODO: Given a vector of integers, split it in two halves
+// TODO: 给定一个整数向量，将其分成两半，
 //  and compute the sum of each half in a separate thread.
+//  并在独立的线程中计算每一半的和。
 //  Don't perform any heap allocation. Don't leak any memory.
+//  不要进行任何堆分配。不要泄漏任何内存。
 
 pub fn sum(v: Vec<i32>) -> i32 {
     todo!()

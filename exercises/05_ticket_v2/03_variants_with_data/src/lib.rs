@@ -1,6 +1,9 @@
 // TODO: Implement `Ticket::assigned_to`.
+// TODO: 实现 `Ticket::assigned_to`。
 //  Return the name of the person assigned to the ticket, if the ticket is in progress.
+//  返回分配给该工单的人员姓名（如果工单处于进行中状态）。
 //  Panic otherwise.
+//  否则触发 panic。
 
 #[derive(Debug, PartialEq)]
 struct Ticket {

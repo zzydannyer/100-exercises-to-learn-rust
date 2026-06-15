@@ -1,4 +1,5 @@
 // TODO: Convert the implementation to use bounded channels.
+// TODO: 将实现转换为使用有界通道。
 use crate::data::{Ticket, TicketDraft};
 use crate::store::{TicketId, TicketStore};
 use std::sync::mpsc::{Receiver, Sender};
@@ -58,7 +59,9 @@ pub fn server(receiver: Receiver<Command>) {
             }
             Err(_) => {
                 // There are no more senders, so we can safely break
+                // 没有更多的发送者了，所以我们可以安全地中断
                 // and shut down the server.
+                // 并关闭服务器。
                 break;
             }
         }

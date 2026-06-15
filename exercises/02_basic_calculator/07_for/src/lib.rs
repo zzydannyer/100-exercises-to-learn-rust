@@ -1,4 +1,5 @@
 // Rewrite the factorial function using a `for` loop.
+// 使用 `for` 循环重写阶乘函数。
 pub fn factorial(n: u32) -> u32 {
     todo!()
 }

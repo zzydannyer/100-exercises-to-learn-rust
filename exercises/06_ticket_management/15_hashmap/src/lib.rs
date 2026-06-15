@@ -1,5 +1,7 @@
 // TODO: Replace `todo!()`s with the correct implementation.
+// TODO: 将 `todo!()` 替换为正确的实现。
 //  Implement additional traits on `TicketId` if needed.
+//  如有需要，在 `TicketId` 上实现额外的 trait。
 
 use std::collections::HashMap;
 use std::ops::{Index, IndexMut};

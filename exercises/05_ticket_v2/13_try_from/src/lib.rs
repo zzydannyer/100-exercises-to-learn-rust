@@ -1,5 +1,7 @@
 // TODO: Implement `TryFrom<String>` and `TryFrom<&str>` for `Status`.
+// TODO: 为 `Status` 实现 `TryFrom<String>` 和 `TryFrom<&str>`。
 //  The parsing should be case-insensitive.
+//  解析应不区分大小写。
 
 #[derive(Debug, PartialEq, Clone)]
 enum Status {

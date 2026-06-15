@@ -1,7 +1,11 @@
 // TODO: Add &mut-setters to the `Ticket` struct for each of its fields.
+// TODO: 为 `Ticket` 结构体的每个字段添加 &mut-setter 方法。
 //   Make sure to enforce the same validation rules you have in `Ticket::new`!
+//   确保强制执行与 `Ticket::new` 中相同的验证规则！
 //   Even better, extract that logic and reuse it in both places. You can use
+//   更好的是，提取该逻辑并在两个地方复用。你可以为此使用私有函数或私有静态方法。
 //   private functions or private static methods for that.
+//   更好的是，提取该逻辑并在两个地方复用。你可以为此使用私有函数或私有静态方法。
 
 pub struct Ticket {
     title: String,

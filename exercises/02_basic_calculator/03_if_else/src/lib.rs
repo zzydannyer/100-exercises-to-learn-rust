@@ -1,6 +1,9 @@
 /// Return `12` if `n` is even,
+/// 如果 `n` 是偶数，返回 `12`，
 /// `13` if `n` is divisible by `3`,
+/// 如果 `n` 能被 `3` 整除，返回 `13`，
 /// `17` otherwise.
+/// 否则返回 `17`。
 fn magic_number(n: u32) -> u32 {
     todo!()
 }

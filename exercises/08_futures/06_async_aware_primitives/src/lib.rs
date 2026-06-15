@@ -1,9 +1,13 @@
 /// TODO: the code below will deadlock because it's using std's channels,
+/// TODO: 下面的代码会因为使用 std 的通道而死锁，
 ///  which are not async-aware.
+///  std 通道不支持异步。
 ///  Rewrite it to use `tokio`'s channels primitive (you'll have to touch
+///  重写它以使用 `tokio` 的通道原语（你也需要修改测试代码）。
 ///  the testing code too, yes).
 ///
 /// Can you understand the sequence of events that can lead to a deadlock?
+/// 你能理解导致死锁的事件序列吗？
 use std::sync::mpsc;
 
 pub struct Message {
@@ -12,6 +16,7 @@ pub struct Message {
 }
 
 /// Replies with `pong` to any message it receives, setting up a new
+/// 用 `pong` 回复收到的任何消息，设置一个新的通道以继续与调用者通信。
 /// channel to continue communicating with the caller.
 pub async fn pong(mut receiver: mpsc::Receiver<Message>) {
     loop {
@@ -31,7 +36,7 @@ pub async fn pong(mut receiver: mpsc::Receiver<Message>) {
 
 #[cfg(test)]
 mod tests {
-    use crate::{pong, Message};
+    use crate::{Message, pong};
     use std::sync::mpsc;
 
     #[tokio::test]

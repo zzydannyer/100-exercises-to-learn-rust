@@ -7,10 +7,12 @@ pub mod store;
 
 #[derive(Clone)]
 // TODO: flesh out the client implementation.
+// TODO: 完善客户端实现。
 pub struct TicketStoreClient {}
 
 impl TicketStoreClient {
     // Feel free to panic on all errors, for simplicity.
+    // 为简单起见，可以在所有错误上 panic。
     pub fn insert(&self, draft: TicketDraft) -> TicketId {
         todo!()
     }
@@ -27,6 +29,7 @@ pub fn launch() -> TicketStoreClient {
 }
 
 // No longer public! This becomes an internal detail of the library now.
+// 不再是公共的！这现在成为库的内部细节。
 enum Command {
     Insert {
         draft: TicketDraft,
@@ -58,7 +61,9 @@ fn server(receiver: Receiver<Command>) {
             }
             Err(_) => {
                 // There are no more senders, so we can safely break
+                // 没有更多的发送者了，所以我们可以安全地中断
                 // and shut down the server.
+                // 并关闭服务器。
                 break;
             }
         }

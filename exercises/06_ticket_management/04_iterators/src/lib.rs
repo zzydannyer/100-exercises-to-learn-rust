@@ -1,13 +1,19 @@
 use ticket_fields::{TicketDescription, TicketTitle};
 
 // TODO: Let's start sketching our ticket store!
+// TODO: 让我们开始勾勒我们的工单存储！
 //  First task: implement `IntoIterator` on `TicketStore` to allow iterating over all the tickets
+//  第一个任务：在 `TicketStore` 上实现 `IntoIterator`，以允许使用 `for` 循环遍历其中包含的所有工单。
 //  it contains using a `for` loop.
 //
 // Hint: you shouldn't have to implement the `Iterator` trait in this case.
+// 提示：在这种情况下，你不必实现 `Iterator` trait。
 //   You want to *delegate* the iteration to the `Vec<Ticket>` field in `TicketStore`.
+//   你应该将迭代*委托*给 `TicketStore` 中的 `Vec<Ticket>` 字段。
 //   Look at the standard library documentation for `Vec` to find the right type
+//   查看标准库中 `Vec` 的文档，以找到
 //   to return from `into_iter`.
+//   从 `into_iter` 返回的正确类型。
 #[derive(Clone)]
 pub struct TicketStore {
     tickets: Vec<Ticket>,

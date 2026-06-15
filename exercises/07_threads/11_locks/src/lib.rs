@@ -1,7 +1,10 @@
 // TODO: Fill in the missing methods for `TicketStore`.
+// TODO: 填写 `TicketStore` 缺失的方法。
 //  Notice how we no longer need a separate update command: `Get` now returns a handle to the ticket
+//  注意，我们不再需要单独的更新命令：`Get` 现在返回一个票据的句柄，
 //  which allows the caller to both modify and read the ticket.
-use std::sync::mpsc::{sync_channel, Receiver, SyncSender, TrySendError};
+//  允许调用者既可以修改也可以读取票据。
+use std::sync::mpsc::{Receiver, SyncSender, TrySendError, sync_channel};
 use std::sync::{Arc, Mutex};
 
 use crate::data::{Ticket, TicketDraft};
@@ -80,7 +83,9 @@ pub fn server(receiver: Receiver<Command>) {
             }
             Err(_) => {
                 // There are no more senders, so we can safely break
+                // 没有更多的发送者了，所以我们可以安全地中断
                 // and shut down the server.
+                // 并关闭服务器。
                 break;
             }
         }

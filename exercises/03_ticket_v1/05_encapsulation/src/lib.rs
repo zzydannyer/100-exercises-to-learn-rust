@@ -31,9 +31,13 @@ pub mod ticket {
         }
 
         // TODO: Add three public methods to the `Ticket` struct:
+        // TODO: 为 `Ticket` 结构体添加三个公有方法：
         //  - `title` that returns the `title` field.
+        //  - `title` 返回 `title` 字段。
         //  - `description` that returns the `description` field.
+        //  - `description` 返回 `description` 字段。
         //  - `status` that returns the `status` field.
+        //  - `status` 返回 `status` 字段。
     }
 }
 

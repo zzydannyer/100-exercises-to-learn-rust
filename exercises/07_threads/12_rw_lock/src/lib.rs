@@ -1,6 +1,8 @@
 // TODO: Replace `Mutex` with `RwLock` in the `TicketStore` struct and
+// TODO: 将 `TicketStore` 结构体中的 `Mutex` 替换为 `RwLock`，
 //  all other relevant places to allow multiple readers to access the ticket store concurrently.
-use std::sync::mpsc::{sync_channel, Receiver, SyncSender, TrySendError};
+//  以及所有其他相关位置，以允许多个读取器并发访问票据存储。
+use std::sync::mpsc::{Receiver, SyncSender, TrySendError, sync_channel};
 use std::sync::{Arc, Mutex};
 
 use crate::data::{Ticket, TicketDraft};
@@ -79,7 +81,9 @@ pub fn server(receiver: Receiver<Command>) {
             }
             Err(_) => {
                 // There are no more senders, so we can safely break
+                // 没有更多的发送者了，所以我们可以安全地中断
                 // and shut down the server.
+                // 并关闭服务器。
                 break;
             }
         }

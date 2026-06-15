@@ -1,7 +1,11 @@
 // TODO: Replace `todo!()`s with the correct implementation.
+// TODO: 将 `todo!()` 替换为正确的实现。
 //  Implement `IntoIterator` for `&TicketStore`. The iterator should yield immutable
+//  TODO: 为 `&TicketStore` 实现 `IntoIterator`。该迭代器应产生对工单的不可变引用，按它们的 `TicketId` 排序。
 //  references to the tickets, ordered by their `TicketId`.
+//  为 `&TicketStore` 实现 `IntoIterator`。该迭代器应产生对工单的不可变引用，按它们的 `TicketId` 排序。
 //  Implement additional traits on `TicketId` if needed.
+//  如有需要，在 `TicketId` 上实现额外的 trait。
 
 use std::collections::BTreeMap;
 use std::ops::{Index, IndexMut};

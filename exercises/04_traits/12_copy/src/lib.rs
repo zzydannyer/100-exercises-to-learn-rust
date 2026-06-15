@@ -1,5 +1,7 @@
 // TODO: implement the necessary traits to make the test compile and pass.
+// TODO: 实现必要的 trait 以使测试编译通过。
 //  You *can't* modify the test.
+//  你*不能*修改测试。
 
 pub struct WrappingU32 {
     value: u32,

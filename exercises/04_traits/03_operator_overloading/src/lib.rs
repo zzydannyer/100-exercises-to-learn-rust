@@ -7,6 +7,7 @@ struct Ticket {
 }
 
 // TODO: Implement the `PartialEq` trait for `Ticket`.
+// TODO: 为 `Ticket` 实现 `PartialEq` trait。
 
 impl PartialEq for Ticket {}
 

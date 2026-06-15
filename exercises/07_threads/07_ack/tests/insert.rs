@@ -1,6 +1,6 @@
 use response::data::{Status, Ticket, TicketDraft};
 use response::store::TicketId;
-use response::{launch, Command};
+use response::{Command, launch};
 use ticket_fields::test_helpers::{ticket_description, ticket_title};
 
 #[test]
@@ -20,7 +20,9 @@ fn insert_works() {
     sender
         .send(command)
         // If the thread is no longer running, this will panic
+        // 如果线程不再运行，这将引发 panic
         // because the channel will be closed.
+        // 因为通道将被关闭。
         .expect("Did you actually spawn a thread? The channel is closed!");
 
     let ticket_id: TicketId = response_receiver.recv().expect("No response received!");
