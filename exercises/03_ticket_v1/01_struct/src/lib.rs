@@ -10,6 +10,17 @@
 // greater than 0, otherwise `false`.
 // 它还应该有一个名为 `is_available` 的方法，如果数量大于 0 则返回 `true`，否则返回 `false`。
 
+struct Order {
+    price: u32,
+    quantity: u32,
+}
+
+impl Order {
+    fn is_available(&self) -> bool {
+        self.quantity > 0
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

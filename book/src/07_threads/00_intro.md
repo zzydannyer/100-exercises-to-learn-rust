@@ -1,5 +1,5 @@
-# Intro
-# 介绍
+# Threads
+# 线程
 
 One of Rust's big promises is _fearless concurrency_: making it easier to write safe, concurrent programs.
 Rust 的一大承诺是_无畏并发_：使编写安全、并发的程序更加容易。

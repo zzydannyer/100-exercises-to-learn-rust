@@ -1,5 +1,5 @@
-# Intro
-# 介绍
+# Ticket Management
+# 工单管理
 
 In the previous chapter we modelled `Ticket` in a vacuum: we defined its fields and their constraints, we learned
 how to best represent them in Rust, but we didn't consider how `Ticket` fits into a larger system.
