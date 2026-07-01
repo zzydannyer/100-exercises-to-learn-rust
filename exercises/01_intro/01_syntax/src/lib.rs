@@ -7,7 +7,7 @@
 //
 // The input parameters should have the same type of the return type.
 // 输入参数应该与返回类型具有相同的类型。
-fn compute(a, b) -> u32 {
+fn compute(a: u32, b: u32) -> u32 {
     // Don't touch the function body.
     // 不要修改函数体。
     a + b * 2

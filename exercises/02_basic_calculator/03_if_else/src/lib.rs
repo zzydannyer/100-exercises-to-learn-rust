@@ -5,7 +5,13 @@
 /// `17` otherwise.
 /// 否则返回 `17`。
 fn magic_number(n: u32) -> u32 {
-    todo!()
+    if n % 2 == 0 {
+        12
+    } else if n % 3 == 0 {
+        13
+    } else {
+        17
+    }
 }
 
 #[cfg(test)]

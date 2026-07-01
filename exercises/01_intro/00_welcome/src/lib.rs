@@ -32,7 +32,7 @@
 fn greeting() -> &'static str {
     // TODO: fix me 👇
     // TODO: 修复我 👇
-    "I'm ready to __!"
+    "I'm ready to learn Rust!"
 }
 
 // Your solutions will be automatically verified by a set of tests.

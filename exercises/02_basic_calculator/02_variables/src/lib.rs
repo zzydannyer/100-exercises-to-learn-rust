@@ -16,7 +16,7 @@ pub fn speed(start: u32, end: u32, time_elapsed: u32) -> u32 {
     // TODO: 定义一个名为 `distance` 的变量，使用正确的值以使测试通过。
     //  Do you need to annotate the type of `distance`? Why or why not?
     //  你需要为 `distance` 标注类型吗？为什么需要或不需要？
-
+    let distance = end - start;
     // Don't change the line below
     // 不要修改下面这行
     distance / time_elapsed

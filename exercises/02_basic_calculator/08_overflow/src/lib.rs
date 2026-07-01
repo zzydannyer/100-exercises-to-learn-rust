@@ -10,9 +10,12 @@
 // 出于我们稍后会解释的原因，自定义需要在仓库根目录的 `Cargo.toml` 中进行，而不是练习的 `Cargo.toml`。
 
 pub fn factorial(n: u32) -> u32 {
-    let mut result = 1;
+    let mut result: u32 = 1;
     for i in 1..=n {
-        result *= i;
+        // 回绕
+        // 数值溢出后像钟表一样循环，超出最大值从头开始，低于最小值从末尾折返。
+        // 例：u8=255 + 1 → 0
+        result = result.wrapping_mul(i);
     }
     result
 }

@@ -9,7 +9,13 @@ pub fn factorial(n: u32) -> u32 {
     // 从而抑制类型错误。
     // It panics at runtime.
     // 它在运行时触发 panic。
-    todo!()
+    let mut result = 1;
+    let mut i = 1;
+    while i <= n {
+        result *= i;
+        i += 1;
+    }
+    result
 }
 
 #[cfg(test)]

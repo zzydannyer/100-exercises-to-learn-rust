@@ -1,11 +1,14 @@
 pub fn factorial(n: u32) -> u32 {
-    let mut result = 1;
+    let mut result: u32 = 1;
     for i in 1..=n {
         // Use saturating multiplication to stop at the maximum value of u32
         // 使用饱和乘法，在达到 u32 最大值时停止，
         // rather than overflowing and wrapping around
         // 而不是溢出并回绕。
-        result *= i;
+        // 饱和
+        // 溢出后直接卡在边界，不循环。超最大就取最大值，低于最小就取最小值。
+        // 例：u8=255 + 1 → 255
+        result = result.saturating_mul(i);
     }
     result
 }

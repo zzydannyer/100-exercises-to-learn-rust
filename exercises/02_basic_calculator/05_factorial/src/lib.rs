@@ -17,6 +17,9 @@
 //
 // Use only what you learned! No loops yet, so you'll have to use recursion!
 // 只使用你学过的知识！还没有循环，所以你需要使用递归！
+fn factorial(n: u32) -> u32 {
+    if n == 0 { 1 } else { n * factorial(n - 1) }
+}
 
 #[cfg(test)]
 mod tests {
