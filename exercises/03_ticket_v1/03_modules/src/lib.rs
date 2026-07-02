@@ -3,13 +3,14 @@ mod helpers {
     // TODO: 使此代码通过编译，可以通过添加 `use` 语句或使用适当的路径来引用 `Ticket` 结构体。
     //  the appropriate path to refer to the `Ticket` struct.
     // TODO: 使此代码通过编译，可以通过添加 `use` 语句或使用适当的路径来引用 `Ticket` 结构体。
+    use super::Ticket;
 
     fn create_todo_ticket(title: String, description: String) -> Ticket {
         Ticket::new(title, description, "To-Do".into())
     }
 }
 
-struct Ticket {
+pub struct Ticket {
     title: String,
     description: String,
     status: String,

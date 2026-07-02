@@ -29,13 +29,22 @@ impl Ticket {
     // to find the most appropriate options -> https://doc.rust-lang.org/std/string/struct.String.html
     // 以及一些 `String` 方法。使用 Rust 标准库的文档来找到最合适的选项 -> https://doc.rust-lang.org/std/string/struct.String.html
     fn new(title: String, description: String, status: String) -> Self {
-        if status != "ToDo" && status != "InProgress" && status != "Done" {
-            panic!("Invalid status: {}", status);
+        if status != "To-Do" && status != "In Progress" && status != "Done" {
+            panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
         }
 
         if title.is_empty() {
             panic!("Title cannot be empty");
         }
+
+        if title.len() > 50 {
+            panic!("Title cannot be longer than 50 bytes");
+        }
+
+        if description.is_empty() {
+            panic!("Description cannot be empty");
+        }
+
         if description.len() > 500 {
             panic!("Description cannot be longer than 500 bytes");
         }

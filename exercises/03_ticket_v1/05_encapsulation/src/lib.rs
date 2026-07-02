@@ -1,8 +1,8 @@
 pub mod ticket {
     pub struct Ticket {
-        title: String,
-        description: String,
-        status: String,
+        pub title: String,
+        pub description: String,
+        pub status: String,
     }
 
     impl Ticket {
@@ -34,10 +34,19 @@ pub mod ticket {
         // TODO: 为 `Ticket` 结构体添加三个公有方法：
         //  - `title` that returns the `title` field.
         //  - `title` 返回 `title` 字段。
+        pub fn title(&self) -> &str {
+            &self.title
+        }
         //  - `description` that returns the `description` field.
         //  - `description` 返回 `description` 字段。
+        pub fn description(&self) -> &str {
+            &self.description
+        }
         //  - `status` that returns the `status` field.
         //  - `status` 返回 `status` 字段。
+        pub fn status(&self) -> &str {
+            &self.status
+        }
     }
 }
 
