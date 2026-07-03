@@ -5,7 +5,7 @@
 // interior mutability.
 // 我们将在涵盖 trait 和内部可变性之后，在后面的章节中再次讨论这个概念。
 fn outro() -> &'static str {
-    "I have a basic understanding of __!"
+    "I have a basic understanding of destructors!"
 }
 
 #[cfg(test)]

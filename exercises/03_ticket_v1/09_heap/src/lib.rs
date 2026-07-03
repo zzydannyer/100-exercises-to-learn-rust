@@ -15,7 +15,7 @@ mod tests {
 
     #[test]
     fn string_size() {
-        assert_eq!(size_of::<String>(), todo!());
+        assert_eq!(size_of::<String>(), 24);
     }
 
     #[test]
@@ -30,6 +30,6 @@ mod tests {
         // 如果你感到好奇，请查看《Rust 参考手册》中的"Type layout"一节
         // https://doc.rust-lang.org/reference/type-layout.html for more information.
         // https://doc.rust-lang.org/reference/type-layout.html 了解更多信息。
-        assert_eq!(size_of::<Ticket>(), todo!());
+        assert_eq!(size_of::<Ticket>(), 72);
     }
 }

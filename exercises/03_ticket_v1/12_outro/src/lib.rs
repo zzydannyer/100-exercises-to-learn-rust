@@ -12,6 +12,78 @@
 //   Order 必须包含一个名为 `total` 的方法，返回订单的总价。
 //   Order must provide setters and getters for each field.
 //   Order 必须为每个字段提供 setter 和 getter 方法。
+pub struct Order {
+    pub product_name: String,
+    pub quantity: u32,
+    pub unit_price: u32,
+}
+
+fn validate_product_name(product_name: &str) -> bool {
+    if product_name.is_empty() {
+        panic!("product_name must not be empty");
+    }
+
+    if product_name.len() > 300 {
+        panic!("product_name must not be longer than 300 bytes");
+    }
+    true
+}
+
+fn validate_quantity(quantity: u32) -> bool {
+    if quantity == 0 {
+        panic!("quantity must be greater than 0");
+    }
+    true
+}
+
+fn validate_unit_price(unit_price: u32) -> bool {
+    if unit_price == 0 {
+        panic!("unit_price must be greater than 0");
+    }
+    true
+}
+
+impl Order {
+    pub fn total(&self) -> u32 {
+        self.quantity * self.unit_price
+    }
+
+    pub fn new(product_name: String, quantity: u32, unit_price: u32) -> Self {
+        validate_product_name(&product_name);
+        validate_quantity(quantity);
+        validate_unit_price(unit_price);
+
+        Self {
+            product_name,
+            quantity,
+            unit_price,
+        }
+    }
+
+    pub fn product_name(&self) -> &str {
+        &self.product_name
+    }
+
+    pub fn quantity(&self) -> &u32 {
+        &self.quantity
+    }
+
+    pub fn unit_price(&self) -> &u32 {
+        &self.unit_price
+    }
+
+    pub fn set_product_name(&mut self, product_name: String) {
+        self.product_name = product_name;
+    }
+
+    pub fn set_quantity(&mut self, quantity: u32) {
+        self.quantity = quantity;
+    }
+
+    pub fn set_unit_price(&mut self, unit_price: u32) {
+        self.unit_price = unit_price;
+    }
+}
 //
 // Tests are located in a different place this time—in the `tests` folder.
 // 这次测试放在不同的位置——在 `tests` 文件夹中。
