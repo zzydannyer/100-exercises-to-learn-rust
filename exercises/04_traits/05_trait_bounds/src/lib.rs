@@ -12,6 +12,6 @@
 
 /// Return the minimum of two values.
 /// 返回两个值中的最小值。
-pub fn min<T>(left: T, right: T) -> T {
+pub fn min<T: std::cmp::PartialOrd>(left: T, right: T) -> T {
     if left <= right { left } else { right }
 }

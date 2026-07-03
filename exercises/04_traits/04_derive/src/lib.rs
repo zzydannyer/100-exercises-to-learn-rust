@@ -15,7 +15,7 @@
 // If the compared type doesn't implement `Debug`, it doesn't know how to represent them!
 // 如果比较的类型没有实现 `Debug`，它不知道如何表示它们！
 
-#[derive(PartialEq)]
+#[derive(PartialEq, Debug)]
 struct Ticket {
     title: String,
     description: String,

@@ -9,8 +9,8 @@
 //  Then delete the code below and move on to the next exercise.
 //  然后删除下面的代码，继续下一个练习。
 
-impl PartialEq for u32 {
-    fn eq(&self, _other: &Self) -> bool {
-        todo!()
-    }
-}
+// impl PartialEq for u32 {
+//     fn eq(&self, _other: &Self) -> bool {
+//         todo!()
+//     }
+// }
