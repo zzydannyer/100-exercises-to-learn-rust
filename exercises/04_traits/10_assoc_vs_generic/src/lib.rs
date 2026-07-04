@@ -25,6 +25,41 @@
 // 不过你不必这样做：手动编写三个独立的实现也是完全可以的。
 // implementations manually. Venture further only if you're curious.
 // 不过你不必这样做：手动编写三个独立的实现也是完全可以的。
+// 定义泛型 trait Power，N 为指数的类型
+
+trait Power<N> {
+    fn power(self, exponent: N) -> Self;
+}
+
+impl Power<u16> for u32 {
+    fn power(self, exponent: u16) -> u32 {
+        let mut result = 1;
+        for _ in 0..exponent {
+            result *= self;
+        }
+        result
+    }
+}
+
+impl Power<u32> for u32 {
+    fn power(self, exponent: u32) -> u32 {
+        let mut result = 1;
+        for _ in 0..exponent {
+            result *= self;
+        }
+        result
+    }
+}
+
+impl Power<&u32> for u32 {
+    fn power(self, exponent: &u32) -> u32 {
+        let mut result = 1;
+        for _ in 0..*exponent {
+            result *= self;
+        }
+        result
+    }
+}
 
 #[cfg(test)]
 mod tests {

@@ -6,5 +6,5 @@ pub fn example() {
     //
     // TODO: Comment out the following line and move on to the next exercise.
     // TODO: 注释掉下面这行，然后继续下一个练习。
-    std::mem::size_of::<str>();
+    // std::mem::size_of::<str>();
 }
