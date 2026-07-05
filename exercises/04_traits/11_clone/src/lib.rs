@@ -4,9 +4,10 @@
 // TODO: 添加必要的 `Clone` 实现（以及调用）以使代码编译通过。
 
 pub fn summary(ticket: Ticket) -> (Ticket, Summary) {
-    (ticket, ticket.summary())
+    (ticket.clone(), ticket.summary())
 }
 
+#[derive(Clone)]
 pub struct Ticket {
     pub title: String,
     pub description: String,

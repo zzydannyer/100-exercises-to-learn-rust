@@ -5,6 +5,26 @@
 //  You can see the expected API in the tests below.
 //  你可以在下面的测试中看到预期的 API。
 
+struct DropBomb {
+    panic: bool,
+}
+
+impl DropBomb {
+    fn new() -> Self {
+        Self { panic: true }
+    }
+    fn defuse(&mut self) {
+        self.panic = false
+    }
+}
+
+impl Drop for DropBomb {
+    fn drop(&mut self) {
+        if self.panic {
+            panic!()
+        }
+    }
+}
 #[cfg(test)]
 mod tests {
     use super::*;
