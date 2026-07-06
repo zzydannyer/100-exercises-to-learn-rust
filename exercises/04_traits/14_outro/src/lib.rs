@@ -19,9 +19,15 @@
 // 测试位于 `tests` 文件夹中——要注意你的类型和方法的可见性。
 use std::ops::Add;
 
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone)]
 pub struct SaturatingU16 {
     value: u16,
+}
+
+impl PartialEq<u16> for SaturatingU16 {
+    fn eq(&self, other: &u16) -> bool {
+        self.value == *other
+    }
 }
 
 impl From<u16> for SaturatingU16 {
@@ -40,7 +46,7 @@ impl From<u8> for SaturatingU16 {
 
 impl From<&u16> for SaturatingU16 {
     fn from(value: &u16) -> Self {
-        SaturatingU16 { value: *value }
+        Self { value: *value }
     }
 }
 
@@ -52,11 +58,34 @@ impl From<&u8> for SaturatingU16 {
     }
 }
 
+impl SaturatingU16 {
+    fn saturating_add_val(self, val: u16) -> Self {
+        Self {
+            value: self.value.saturating_add(val),
+        }
+    }
+}
+
 impl Add for SaturatingU16 {
     type Output = Self;
 
     fn add(self, rhs: Self) -> Self {
-        let value = self.value.saturating_add(rhs.value);
-        SaturatingU16 { value }
+        self.saturating_add_val(rhs.value)
+    }
+}
+
+impl Add<u16> for SaturatingU16 {
+    type Output = Self;
+
+    fn add(self, rhs: u16) -> Self {
+        self.saturating_add_val(rhs)
+    }
+}
+
+impl Add<&Self> for SaturatingU16 {
+    type Output = Self;
+
+    fn add(self, rhs: &Self) -> Self {
+        self.saturating_add_val(rhs.value)
     }
 }
