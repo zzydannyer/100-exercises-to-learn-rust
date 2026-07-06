@@ -5,7 +5,23 @@
 //   "Description not provided".
 //   "Description not provided"。
 fn easy_ticket(title: String, description: String, status: Status) -> Ticket {
-    todo!()
+    if title.is_empty() {
+        panic!("Title cannot be empty");
+    }
+    if title.len() > 50 {
+        panic!("Title cannot be longer than 50 bytes");
+    }
+
+    let description = match description {
+        s if s.is_empty() || s.len() > 500 => "Description not provided".to_string(),
+        s => s,
+    };
+
+    Ticket {
+        title,
+        description,
+        status,
+    }
 }
 
 #[derive(Debug, PartialEq, Clone)]

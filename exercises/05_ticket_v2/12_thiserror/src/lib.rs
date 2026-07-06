@@ -6,11 +6,17 @@
 //   在每个变体中存储 `String` 字段。
 //   You'll also have to add `thiserror` as a dependency in the `Cargo.toml` file.
 //   你还必须在 `Cargo.toml` 文件中添加 `thiserror` 作为依赖项。
+use thiserror::Error;
 
+#[derive(Error, Debug, PartialEq, Clone)]
 enum TicketNewError {
+    #[error("Title cannot be empty")]
     TitleCannotBeEmpty,
+    #[error("Title cannot be longer than 50 bytes")]
     TitleTooLong,
+    #[error("Description cannot be empty")]
     DescriptionCannotBeEmpty,
+    #[error("Description cannot be longer than 500 bytes")]
     DescriptionTooLong,
 }
 

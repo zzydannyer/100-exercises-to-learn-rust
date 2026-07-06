@@ -7,6 +7,7 @@
 //   该库目标应暴露一个名为 `hello_world` 的公有函数，该函数不接受参数
 //   and returns nothing.
 //   且不返回任何内容。
+mod packages;
 use packages::hello_world;
 
 // This is the entrypoint of the binary.

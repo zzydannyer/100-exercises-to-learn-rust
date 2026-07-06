@@ -10,7 +10,11 @@ impl Shape {
     //  either an `if let` or a `let/else`.
     //  要么用 `if let`，要么用 `let/else`。
     pub fn radius(&self) -> f64 {
-        todo!()
+        if let Shape::Circle { radius } = self {
+            *radius
+        } else {
+            panic!("Only `Circle` shapes have a radius");
+        }
     }
 }
 
