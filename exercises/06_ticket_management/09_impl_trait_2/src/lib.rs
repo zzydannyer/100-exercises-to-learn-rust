@@ -37,7 +37,10 @@ impl TicketStore {
     // 这可以使方法使用起来更简洁，因为它消除了调用处 `.into()` 的语法噪声。
     // from the calling site. It can worsen the quality of the compiler error messages, though.
     // 不过，它可能会降低编译器错误信息的质量。
-    pub fn add_ticket(&mut self, ticket: impl Into<Ticket>) {
+    pub fn add_ticket<T>(&mut self, ticket: T)
+    where
+        T: Into<Ticket>,
+    {
         self.tickets.push(ticket.into());
     }
 }

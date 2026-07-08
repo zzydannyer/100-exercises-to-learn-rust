@@ -3,6 +3,12 @@
 //  The slice should be modified in place.
 //  切片应在原地进行修改。
 
+fn squared(slice: &mut [i32]) {
+    for elem in slice {
+        *elem = (*elem).pow(2);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
