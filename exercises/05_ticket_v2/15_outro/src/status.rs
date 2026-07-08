@@ -3,10 +3,35 @@
 //  The parsing should be case-insensitive.
 //  解析应不区分大小写。
 
+#[derive(Debug, PartialEq, Clone)]
 pub enum Status {
     ToDo,
     InProgress,
     Done,
+}
+
+impl TryFrom<String> for Status {
+    type Error = String;
+    fn try_from(value: String) -> Result<Self, Self::Error> {
+        match value.to_lowercase().as_str() {
+            "todo" => Ok(Status::ToDo),
+            "inprogress" => Ok(Status::InProgress),
+            "done" => Ok(Status::Done),
+            _ => Err(format!("Invalid status: {}", value)),
+        }
+    }
+}
+
+impl TryFrom<&str> for Status {
+    type Error = String;
+    fn try_from(value: &str) -> Result<Self, Self::Error> {
+        match value.to_lowercase().as_str() {
+            "todo" => Ok(Status::ToDo),
+            "inprogress" => Ok(Status::InProgress),
+            "done" => Ok(Status::Done),
+            _ => Err(format!("Invalid status: {}", value)),
+        }
+    }
 }
 
 #[cfg(test)]

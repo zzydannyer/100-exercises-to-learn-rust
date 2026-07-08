@@ -9,9 +9,17 @@ use ticket_fields::{TicketDescription, TicketTitle};
 //   `TicketStore` 中的 `Vec<Ticket>` 字段。查看标准库中 `Vec` 的文档，
 //   for `Vec` to find the right type to return from `iter`.
 //   以找到从 `iter` 返回的正确类型。
+use std::slice::Iter;
+
 #[derive(Clone)]
 pub struct TicketStore {
     tickets: Vec<Ticket>,
+}
+
+impl TicketStore {
+    pub fn iter(&self) -> Iter<'_, Ticket> {
+        self.tickets.iter()
+    }
 }
 
 #[derive(Debug, Clone, PartialEq)]

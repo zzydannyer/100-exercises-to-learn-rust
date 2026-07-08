@@ -26,7 +26,12 @@ pub fn fibonacci(n: u32) -> u32 {
     // 提示：使用 `Vec` 来缓存你已经计算过的结果
     // so that you don't have to recalculate them several times.
     // 这样就不必多次重新计算它们了。
-    todo!()
+    let mut memo = vec![0, 1];
+    let n_usize = n as usize;
+    for i in 2..=n_usize {
+        memo.push(memo[i - 1] + memo[i - 2]);
+    }
+    memo[n_usize]
 }
 
 #[cfg(test)]

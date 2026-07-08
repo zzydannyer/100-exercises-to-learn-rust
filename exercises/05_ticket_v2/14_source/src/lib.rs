@@ -16,6 +16,7 @@ use crate::status::Status;
 // In this case, `src/lib.rs`, thus `status.rs` should be placed in the `src` directory.
 // 在这种情况下，`src/lib.rs` 声明了模块，因此 `status.rs` 应放置在 `src` 目录中。
 mod status;
+use status::ParseStatusError;
 
 // TODO: Add a new error variant to `TicketNewError` for when the status string is invalid.
 // TODO: 为 `TicketNewError` 添加一个新的错误变体，用于处理状态字符串无效的情况。
@@ -32,6 +33,8 @@ pub enum TicketNewError {
     DescriptionCannotBeEmpty,
     #[error("Description cannot be longer than 500 bytes")]
     DescriptionTooLong,
+    #[error("{0}")]
+    InvalidStatus(#[source] ParseStatusError),
 }
 
 #[derive(Debug, PartialEq, Clone)]
@@ -58,6 +61,7 @@ impl Ticket {
 
         // TODO: Parse the status string into a `Status` enum.
         // TODO: 将状态字符串解析为 `Status` 枚举。
+        let status = Status::try_from(status).map_err(|e| TicketNewError::InvalidStatus(e))?;
 
         Ok(Ticket {
             title,
