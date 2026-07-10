@@ -105,15 +105,6 @@ impl IndexMut<&TicketId> for TicketStore {
     }
 }
 
-impl IntoIterator for TicketStore {
-    type Item = (TicketId, Ticket);
-    type IntoIter = <BTreeMap<TicketId, Ticket> as IntoIterator>::IntoIter;
-
-    fn into_iter(self) -> Self::IntoIter {
-        self.tickets.into_iter()
-    }
-}
-
 impl<'a> IntoIterator for &'a TicketStore {
     type Item = &'a Ticket;
     type IntoIter = std::collections::btree_map::Values<'a, TicketId, Ticket>;
