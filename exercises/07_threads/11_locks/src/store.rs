@@ -28,7 +28,7 @@ impl TicketStore {
             description: ticket.description,
             status: Status::ToDo,
         };
-        todo!();
+        self.tickets.insert(id, Arc::new(Mutex::new(ticket)));
         id
     }
 
@@ -36,7 +36,7 @@ impl TicketStore {
     // `get` 方法应返回一个票据的句柄，
     // which allows the caller to either read or modify the ticket.
     // 允许调用者读取或修改票据。
-    pub fn get(&self, id: TicketId) -> Option<todo!()> {
-        todo!()
+    pub fn get(&self, id: TicketId) -> Option<Arc<Mutex<Ticket>>> {
+        self.tickets.get(&id).cloned()
     }
 }

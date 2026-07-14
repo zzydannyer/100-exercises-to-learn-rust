@@ -3,7 +3,7 @@
 //  Feel free to call an instructor to verify your solution!
 //  随时可以叫导师来验证你的解决方案！
 use channels::data::TicketDraft;
-use channels::{launch, Command};
+use channels::{Command, launch};
 use std::time::Duration;
 use ticket_fields::test_helpers::{ticket_description, ticket_title};
 
@@ -33,7 +33,7 @@ fn ready() {
     // We have no way to know if the inserts are actually happening and if they
     // 我们无法知道插入是否真的发生了，以及它们是否正确发生。
     // are happening correctly.
-    let move_forward = false;
+    let move_forward = true;
 
     assert!(move_forward);
 }

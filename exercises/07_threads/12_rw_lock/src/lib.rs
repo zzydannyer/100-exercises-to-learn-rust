@@ -3,7 +3,7 @@
 //  all other relevant places to allow multiple readers to access the ticket store concurrently.
 //  以及所有其他相关位置，以允许多个读取器并发访问票据存储。
 use std::sync::mpsc::{Receiver, SyncSender, TrySendError, sync_channel};
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, RwLock};
 
 use crate::data::{Ticket, TicketDraft};
 use crate::store::{TicketId, TicketStore};
@@ -28,7 +28,7 @@ impl TicketStoreClient {
         Ok(response_receiver.recv().unwrap())
     }
 
-    pub fn get(&self, id: TicketId) -> Result<Option<Arc<Mutex<Ticket>>>, OverloadedError> {
+    pub fn get(&self, id: TicketId) -> Result<Option<Arc<RwLock<Ticket>>>, OverloadedError> {
         let (response_sender, response_receiver) = sync_channel(1);
         self.sender
             .try_send(Command::Get {
@@ -57,7 +57,7 @@ enum Command {
     },
     Get {
         id: TicketId,
-        response_channel: SyncSender<Option<Arc<Mutex<Ticket>>>>,
+        response_channel: SyncSender<Option<Arc<RwLock<Ticket>>>>,
     },
 }
 
