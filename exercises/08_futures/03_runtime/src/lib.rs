@@ -5,8 +5,27 @@
 //  the `Display` representation of the `reply` argument as a response.
 //  始终回复客户端。
 use std::fmt::Display;
+use std::future::pending;
+use std::sync::Arc;
 use tokio::io::AsyncWriteExt;
 use tokio::net::TcpListener;
+use tokio::net::TcpStream;
+
+async fn handle_connection<T: Display>(mut socket: TcpStream, reply: Arc<T>) {
+    let _ = socket.write_all(reply.to_string().as_bytes()).await;
+    let _ = socket.shutdown().await;
+}
+
+async fn accept_loop<T>(listener: TcpListener, reply: Arc<T>)
+where
+    T: Display + Send + Sync + 'static,
+{
+    loop {
+        let (socket, _) = listener.accept().await.unwrap();
+        let reply = reply.clone();
+        tokio::spawn(handle_connection(socket, reply));
+    }
+}
 
 pub async fn fixed_reply<T>(first: TcpListener, second: TcpListener, reply: T)
 where
@@ -14,7 +33,10 @@ where
     // `T` 不能被克隆。如何在两个服务器任务之间共享它？
     T: Display + Send + Sync + 'static,
 {
-    todo!()
+    let reply = Arc::new(reply);
+    tokio::spawn(accept_loop(first, reply.clone()));
+    tokio::spawn(accept_loop(second, reply));
+    pending::<()>().await
 }
 
 #[cfg(test)]

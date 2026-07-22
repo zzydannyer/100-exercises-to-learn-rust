@@ -20,7 +20,11 @@ use tokio::net::TcpListener;
 // - `tokio::io::copy` to copy data from the reader to the writer
 // - `tokio::io::copy` 将数据从读取器复制到写入器
 pub async fn echo(listener: TcpListener) -> Result<(), anyhow::Error> {
-    todo!()
+    loop {
+        let (mut socket, _) = listener.accept().await?;
+        let (mut reader, mut writer) = socket.split();
+        tokio::io::copy(&mut reader, &mut writer).await?;
+    }
 }
 
 #[cfg(test)]

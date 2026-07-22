@@ -6,8 +6,23 @@ use tokio::net::TcpListener;
 //  多个连接（在同一个监听器上）应并发处理。
 //  The received data should be echoed back to the client.
 //  接收到的数据应回显给客户端。
+
+async fn echo_connection(mut socket: tokio::net::TcpStream) {
+    let (mut reader, mut writer) = socket.split();
+    let _ = tokio::io::copy(&mut reader, &mut writer).await;
+}
+
+async fn accept_loop(listener: TcpListener) {
+    loop {
+        let (socket, _) = listener.accept().await.unwrap();
+        tokio::spawn(echo_connection(socket));
+    }
+}
+
 pub async fn echoes(first: TcpListener, second: TcpListener) -> Result<(), anyhow::Error> {
-    todo!()
+    tokio::spawn(accept_loop(first));
+    tokio::spawn(accept_loop(second));
+    std::future::pending::<Result<(), anyhow::Error>>().await
 }
 
 #[cfg(test)]

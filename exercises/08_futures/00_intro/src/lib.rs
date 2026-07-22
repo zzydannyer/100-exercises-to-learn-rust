@@ -1,7 +1,7 @@
 fn intro() -> &'static str {
     // TODO: fix me 👇
     // TODO: 修复我 👇
-    "I'm ready to _!"
+    "I'm ready to learn about futures!"
 }
 
 #[cfg(test)]
