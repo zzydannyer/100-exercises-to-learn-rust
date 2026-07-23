@@ -57,3 +57,21 @@ pub async fn patch_ticket(
     }
     Ok(Json(ticket.clone()))
 }
+
+pub async fn list_tickets(State(state): State<AppState>) -> Json<Vec<Ticket>> {
+    let tickets = state.tickets.lock().unwrap();
+    let mut list: Vec<Ticket> = tickets.values().cloned().collect();
+    list.sort_by_key(|ticket| ticket.id);
+    Json(list)
+}
+
+pub async fn delete_ticket(
+    State(state): State<AppState>,
+    Path(id): Path<u64>,
+) -> StatusCode {
+    if state.tickets.lock().unwrap().remove(&id).is_some() {
+        StatusCode::NO_CONTENT
+    } else {
+        StatusCode::NOT_FOUND
+    }
+}

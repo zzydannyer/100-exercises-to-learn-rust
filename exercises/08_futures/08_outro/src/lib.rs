@@ -17,6 +17,23 @@
 // 使用 Rust 的包注册表 crates.io 来查找你所需的依赖
 // (if any) to build this system.
 // （如果有的话）来构建这个系统。
-mod model;
-mod state;
 mod handlers;
+pub mod model;
+pub mod state;
+
+use axum::Router;
+use axum::routing::get;
+use handlers::{create_ticket, delete_ticket, get_ticket, list_tickets, patch_ticket};
+use state::AppState;
+use tower_http::cors::CorsLayer;
+
+pub fn app(state: AppState) -> Router {
+    Router::new()
+        .route("/tickets", get(list_tickets).post(create_ticket))
+        .route(
+            "/tickets/{id}",
+            get(get_ticket).patch(patch_ticket).delete(delete_ticket),
+        )
+        .layer(CorsLayer::permissive())
+        .with_state(state)
+}
